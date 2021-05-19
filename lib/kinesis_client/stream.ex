@@ -104,6 +104,11 @@ defmodule KinesisClient.Stream do
   defp get_shard_supervisor(opts) do
     name = Module.concat(KinesisClient.Stream.ShardSupervisor, opts[:stream_name])
     supervisor_name = Module.concat(name,Integer.to_string(:erlang.unique_integer()))
+
+    Logger.debug(
+      "Starting KinesisClient.Stream: [name: #{supervisor_name}, stream_name: #{name}]"
+    )
+
     {{DynamicSupervisor, [strategy: :one_for_one, name: supervisor_name]}, name}
   end
 
