@@ -6,6 +6,7 @@ defmodule KinesisClient.Stream do
   require Logger
   import KinesisClient.Util
   alias KinesisClient.Stream.Coordinator
+  alias UUID
 
   @doc """
   Starts a `KinesisClient.Stream` process.
@@ -84,8 +85,7 @@ defmodule KinesisClient.Stream do
   end
 
   defp unique_id do
-    :erlang.unique_integer()
-    |> Integer.to_string()
+    UUID.uuid4()
   end
 
   defp get_stream_name(opts) do
