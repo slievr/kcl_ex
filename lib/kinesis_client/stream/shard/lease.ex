@@ -219,7 +219,11 @@ defmodule KinesisClient.Stream.Shard.Lease do
   end
 
   def name(shard_id) do
-    Module.concat(__MODULE__, shard_id)
+    name = Module.concat(__MODULE__, shard_id)
     |> Module.concat(UUID.uuid4())
+
+    Logger.debug("Shard lease name: #{name}")
+
+    name
   end
 end
