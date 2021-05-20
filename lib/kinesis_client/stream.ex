@@ -112,7 +112,7 @@ defmodule KinesisClient.Stream do
 
     Logger.debug("Starting KinesisClient.Stream: [name: #{supervisor_name}, stream_name: #{name}]")
 
-    {{DynamicSupervisor, [strategy: :one_for_one, name: supervisor_name]}, name}
+    {{DynamicSupervisor, [strategy: :one_for_one, name: supervisor_name]}, supervisor_name}
   end
 
   defp get_shard_consumer(opts) do
