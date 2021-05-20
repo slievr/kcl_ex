@@ -5,6 +5,7 @@ defmodule KinesisClient.Stream.Shard.Lease do
   alias KinesisClient.Stream.AppState
   alias KinesisClient.Stream.AppState.ShardLease
   alias KinesisClient.Stream.Shard.Pipeline
+  alias UUID
 
   @default_renew_interval 30_000
   # The amount of time that must have elapsed since the least_count was incremented in order to
@@ -219,5 +220,6 @@ defmodule KinesisClient.Stream.Shard.Lease do
 
   def name(shard_id) do
     Module.concat(__MODULE__, shard_id)
+    |> Module.concat(UUID.uuid4())
   end
 end
