@@ -61,7 +61,7 @@ defmodule KinesisClient.Stream do
       shard_supervisor_name: shard_supervisor_name,
       worker_ref: worker_ref,
       shard_args: shard_args
-    ] |> IO.inspect(label: "coordinator_args")
+    ]
 
     children = [
       shard_supervisor_spec,
