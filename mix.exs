@@ -60,6 +60,7 @@ defmodule KinesisClient.Mixfile do
       {:ex_doc, "~> 0.21", only: :dev, runtime: false},
       {:hackney, "~> 1.9"},
       {:jason, "~> 1.1"},
+      {:uuid, "~> 1.1"},
       {:mix_test_watch, "~> 1.0", only: :dev, runtime: false},
       {:mox, "~> 0.5", only: :test},
       {:retry, "~> 0.14"}

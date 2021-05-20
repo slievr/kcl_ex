@@ -2,6 +2,7 @@ defmodule KinesisClient.Stream.Shard do
   @moduledoc false
   use Supervisor, restart: :transient
   alias KinesisClient.Stream.Shard.{Lease, Pipeline}
+  alias UUID
   import KinesisClient.Util
 
   def start_link(args) do
@@ -51,5 +52,6 @@ defmodule KinesisClient.Stream.Shard do
   def name(stream_name, shard_id) do
     result = Module.concat(__MODULE__, stream_name)
     Module.concat(result, shard_id)
+    |> Module.concat(UUID.uuid4())
   end
 end
